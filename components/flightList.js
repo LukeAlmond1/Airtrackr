@@ -19,7 +19,7 @@ export default function FlightList({
   const { selectedDepartFlight, selectedReturnFlight, error, setError } =
     useStateContext();
 
-  const excludedFields = ["iata", "offerId"];
+  const excludedFields = ["iata", "offerId", "lat", "lng"];
 
   function handleNext() {
     if (stage === 1) {
