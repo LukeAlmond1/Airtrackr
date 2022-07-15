@@ -3,7 +3,7 @@ import drop from "../media/drop.svg";
 import minus from "../media/minus.svg";
 import { useStateContext } from "../context/context";
 import themeHandler from "./theme";
-import Image from "next/Image";
+import Image from "next/image";
 
 export default function FlightSelect() {
   const [allFlights, setAllFlights] = useState(false);

@@ -3,7 +3,7 @@ import GetAirport from "../components/getAirport";
 import GetAirline from "../components/getAirline";
 import GetDate from "../components/getDate";
 import axios from "axios";
-import Image from "next/Image";
+import Image from "next/image";
 import far from "../media/far.svg";
 import { useStateContext } from "../context/context";
 import { useRouter } from "next/router";

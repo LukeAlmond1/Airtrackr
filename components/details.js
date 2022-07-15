@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Airport from "./airport";
 import Location from "./location";
-import Image from "next/Image";
+import Image from "next/image";
 import far from "../media/far.svg";
 import Route from "./route";
 import drop from "../media/drop.svg";
