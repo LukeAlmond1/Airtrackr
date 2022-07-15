@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Image from "next/Image";
+import Image from "next/image";
 import Logo from "../media/logo.svg";
 import f1 from "../media/f1.svg";
 import f2 from "../media/f2.svg";
