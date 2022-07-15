@@ -14,8 +14,6 @@
     "country-code-lookup": "^0.0.20",
     "date-and-time": "^2.4.0",
     "framer-motion": "^6.4.2",
-    "google-map-react": "^2.2.0",
-    "google-maps-react": "^2.0.6",
     "millify": "^4.0.0",
     "moment": "^2.29.4",
     "next": "12.2.0",
