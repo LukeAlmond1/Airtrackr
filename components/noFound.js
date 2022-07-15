@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/Image";
+import Image from "next/image";
 import fnd from "../media/fnd.svg";
 import nofnd from "../media/nofnd.svg";
 import far from "../media/far.svg";
