@@ -16,7 +16,7 @@ export default function Found({ msg, numOfFlights, setDataFoundMsg }) {
         </span>
       </p>
       <p className="font-cust md:inline-block hidden text-lg xl:text-xl text-center font-[400] mt-4">
-        {`It looks like we've been able to find some flight <br /> infomation for
+        {`It looks like we've been able to find some flight`} <br /> {`infomation for
         you`}
       </p>
       <p className="font-cust md:hidden text-lg  xl:text-xl text-center font-[400] mt-4">

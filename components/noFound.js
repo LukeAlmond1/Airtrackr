@@ -14,7 +14,7 @@ export default function NoFound({ msg }) {
         {msg}
       </p>
       <p className="font-cust md:inline-block hidden text-lg xl:text-xl text-center font-[400] mt-4">
-        {`It looks like we've haven't been able to find flight <br /> infomation
+        {`It looks like we've haven't been able to find flight`} <br /> {`infomation
         for you`}
       </p>
       <p className="font-cust md:hidden text-lg  xl:text-xl text-center font-[400] mt-4">
