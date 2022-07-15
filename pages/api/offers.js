@@ -42,6 +42,8 @@ async function GetData(origin, dest, dateVal, airline, array) {
         airline: e.owner.name,
         offerId: e.id,
         iata: e.owner.iata_code,
+        lat: e.slices[0].segments[0].origin.latitude,
+        lng: e.slices[0].segments[0].origin.longitude,
         airport: e.slices[0].segments[0].origin.name,
         date: date.format(
           new Date(e.slices[0].segments[0].departing_at),
@@ -77,10 +79,6 @@ export default async function handler(req, res) {
     []
   );
 
-  console.log({
-    departArray: departData,
-    returnArray: returnData,
-  });
 
   res.json({
     departArray: departData,

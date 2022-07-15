@@ -78,9 +78,11 @@ async function getRouteTimes(flightId) {
   };
 }
 
-async function getPlaceId(place, Gkey) {
+async function getPlaceId(place, Gkey, latBias, lngBias) {
+
+  //HAVE TO PASS IN A LAT & LNG FOR IP BIASING
   const getPlaceId = await axios.get(
-    `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${place}&inputtype=textquery&key=${Gkey}&type=Places`
+    `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${place}&inputtype=textquery&key=${Gkey}&type=Places&locationbias=point:${latBias},${lngBias}`
   );
 
   return getPlaceId.data.candidates[0];
@@ -159,9 +161,9 @@ async function getWeather(lat, lng) {
   };
 }
 
-async function getAirportData(airportData, Gkey, place, iataCode) {
+async function getAirportData(airportData, Gkey, place, iataCode, latBias, lngBias) {
   try {
-    const { place_id } = await getPlaceId(encodeURIComponent(place), Gkey);
+    const { place_id } = await getPlaceId(encodeURIComponent(place), Gkey, latBias, lngBias);
     const { long_name, name, formatted_phone_number, rating, geometry } =
       await getPlaceInfo(place_id, Gkey);
     const { articleBody } = await getPlaceDescription(
@@ -187,8 +189,8 @@ async function getAirportData(airportData, Gkey, place, iataCode) {
   }
 }
 
-async function getLocationData(locationData, Gkey, country, city) {
-  const { place_id } = await getPlaceId(encodeURIComponent(city), Gkey);
+async function getLocationData(locationData, Gkey, country, city, latBias, lngBias) {
+  const { place_id } = await getPlaceId(encodeURIComponent(city), Gkey, latBias, lngBias);
   const { lat, lng } = await getPlaceInfo(place_id, Gkey);
   const { articleBody, name } = await getPlaceDescription(
     encodeURIComponent(city),
@@ -236,10 +238,12 @@ async function handleFlight(
   airportCountry,
   airportCity,
   airportName,
-  iataCode
+  iataCode,
+  latBias,
+  lngBias
 ) {
-  await getAirportData(airportArray, Gkey, airportName, iataCode);
-  await getLocationData(locationArray, Gkey, airportCountry, airportCity);
+  await getAirportData(airportArray, Gkey, airportName, iataCode, latBias, lngBias);
+  await getLocationData(locationArray, Gkey, airportCountry, airportCity, latBias, lngBias);
 
   return { locationArray, airportArray };
 }
@@ -304,6 +308,10 @@ export default async function handler(req, res) {
       returnAirportCity,
       returnAirportName,
       returnIataCode,
+      departLat,
+      departLng,
+      returnLat,
+      returnLng
     } = await getBodyData(departId);
 
     await handleRoute(departId, returnId, routeData);
@@ -315,7 +323,9 @@ export default async function handler(req, res) {
       departAirportCountry,
       departAirportCity,
       departAirportName,
-      departIataCode
+      departIataCode,
+      departLat,
+      departLng,
     );
 
     await handleFlight(
@@ -325,7 +335,9 @@ export default async function handler(req, res) {
       returnAirportCountry,
       returnAirportCity,
       returnAirportName,
-      returnIataCode
+      returnIataCode,
+      returnLat,
+      returnLng
     );
 
     if (
