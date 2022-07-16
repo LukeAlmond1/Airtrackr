@@ -29,32 +29,47 @@ export default function Details({ query }) {
   const [error, setError] = useState("");
 
   async function getResults() {
-    let localLoad;
-    setLoadedVal("50%");
+    try {
+      let localLoad;
+      setLoadedVal("50%");
 
-    const { data } = await axios.post(
-      `api/details?departId=${query.departId}&returnId=${query.returnId}`
-    );
+      const { data } = await axios.post(
+        `api/details?departId=${query.departId}&returnId=${query.returnId}`
+      );
 
-    setLoadedVal("100%");
-    localLoad = "100%";
+      setLoadedVal("100%");
+      localLoad = "100%";
 
-    if (data.error) {
-      setTimeout(() => {
-        setError(`There's no information for those flight available`);
-      }, 5000);
-    }
+      if (data.error) {
+        setTimeout(() => {
+          setError(`There's no information for those flight available`);
+        }, 5000);
+      }
 
-    if (localLoad === "100%") {
-      setTimeout(() => {
-        setFetchedAirportData([data.airportDepartData, data.airportReturnData]);
-        setFetchedLocationData([
-          data.locationDepartData,
-          data.locationReturnData,
-        ]);
-        setFetchedRouteData(data.routeData);
+      if (localLoad === "100%") {
+        setTimeout(() => {
+          setFetchedAirportData([
+            data.airportDepartData,
+            data.airportReturnData,
+          ]);
+          setFetchedLocationData([
+            data.locationDepartData,
+            data.locationReturnData,
+          ]);
+          setFetchedRouteData(data.routeData);
+          setLoading(false);
+        }, 5000);
+      }
+    } catch (error) {
+      if (error) {
+        setLoadedVal("100%");
+        localLoad = "100%";
+
+        setTimeout(() => {
+          setError(`There's no information for those flight available`);
+        }, 5000);
         setLoading(false);
-      }, 5000);
+      }
     }
   }
 
