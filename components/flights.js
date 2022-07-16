@@ -40,15 +40,14 @@ export default function Flights({ query }) {
 
     const { returnArray, departArray, error } = res.data;
 
-    if(error){
-      setDataFoundMsg(
-        `Ahh, we couldn't find any flights for those routes`
-      );
-    }
-    setLoading(false);
+    if (localLoad === "100%" && error) {
+      setTimeout(() => {
+        setDataFoundMsg(`Ahh, we couldn't find any flights for those routes`);
+        setLoading(false);
+      }, 5000);
     }
 
-    if (localLoad === "100%") {
+    if (localLoad === "100%" && !error) {
       setTimeout(() => {
         if (departArray.length > 0 && returnArray.length > 0) {
           setDataFoundMsg("Hurrah, we’ve found");

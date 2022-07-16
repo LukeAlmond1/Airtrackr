@@ -36,12 +36,14 @@ export default function Details({ query }) {
       `api/details?departId=${query.departId}&returnId=${query.returnId}`
     );
 
-    if (data.error) {
-      setError(`There's no information for those flight available`);
-    }
-
     setLoadedVal("100%");
     localLoad = "100%";
+
+    if (data.error) {
+      setTimeout(() => {
+        setError(`There's no information for those flight available`);
+      }, 5000);
+    }
 
     if (localLoad === "100%") {
       setTimeout(() => {
