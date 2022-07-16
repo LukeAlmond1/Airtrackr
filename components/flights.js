@@ -34,10 +34,19 @@ export default function Flights({ query }) {
       departDate: query.departDate,
       returnDate: query.returnDate,
     });
+
     setLoadedVal("100%");
     localLoad = "100%";
 
-    const { returnArray, departArray } = res.data;
+    const { returnArray, departArray, error } = res.data;
+
+    if(error){
+      setDataFoundMsg(
+        `Ahh, we couldn't find any flights for those routes`
+      );
+    }
+    setLoading(false);
+    }
 
     if (localLoad === "100%") {
       setTimeout(() => {

@@ -57,12 +57,17 @@ async function GetData(origin, dest, dateVal, airline, array) {
 
     array = array.filter((e) => e.iata === airline);
     return array;
+
   } catch (error) {
     console.log(error.message);
   }
 }
 
 export default async function handler(req, res) {
+  setTimeout(() => {
+     res.json({error: true, msg: "Request timed out"})
+  }, 9900)
+
   const departData = await GetData(
     req.body.origin,
     req.body.dest,
@@ -79,9 +84,8 @@ export default async function handler(req, res) {
     []
   );
 
-
   res.json({
     departArray: departData,
-    returnArray: returnData,
+    returnArray: returnData
   });
 }
