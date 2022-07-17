@@ -67,7 +67,6 @@ export default function FlightSearch() {
     const { data } = await axios.get(
       "https://api.npoint.io/f64ae76bc5304d1c4363"
     );
-    console.log(data);
     setAirlines(data.filter((e) => e.iata !== "" && e.name !== ""));
   }
 

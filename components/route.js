@@ -11,10 +11,6 @@ export default function Route() {
   const apiKey = "AIzaSyAJchZBF9LcOcEzOD78-WQHz8vmmfb1H68";
   const [directionResponse, setDirectionResponse] = useState("");
 
-  const onLoad = (polyline) => {
-    console.log("polyline: ", polyline);
-  };
-
   const path = [
     { lat: fetchedRouteData.origin.lat, lng: fetchedRouteData.origin.lng },
     { lat: fetchedRouteData.dest.lat, lng: fetchedRouteData.dest.lng },

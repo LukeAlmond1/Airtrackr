@@ -42,7 +42,6 @@ export default function GetDate({ question, data, value, setValue }) {
               {data.map((date, i) => (
                 <div
                   onClick={() => {
-                    console.log(new Date(date));
                     setValue(date);
                     setShowAll(false);
                     setError("");

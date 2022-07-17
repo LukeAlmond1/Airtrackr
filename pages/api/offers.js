@@ -78,10 +78,9 @@ export default async function handler(req, res) {
     req.query.airline,
     []
   );
-  setTimeout(() => {
-    res.json({
-      departArray: departData,
-      returnArray: returnData,
-    });
-  }, 10000);
+
+  res.json({
+    departArray: departData,
+    returnArray: returnData,
+  });
 }
