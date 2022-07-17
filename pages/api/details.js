@@ -327,10 +327,6 @@ async function handleRoute(departId, returnId, routeData) {
 
 export default async function handler(req, res) {
   try {
-    setTimeout(() => {
-      res.json({ error: true, msg: "Request timed out" });
-    }, 10000);
-
     let airportDepartData = {};
     let locationDepartData = {};
     let airportReturnData = {};

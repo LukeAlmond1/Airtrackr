@@ -64,9 +64,9 @@ async function GetData(origin, dest, dateVal, airline, array) {
 }
 
 export default async function handler(req, res) {
-  setTimeout(() => {
-     res.json({error: true, msg: "Request timed out"})
-  }, 10000)
+  // setTimeout(() => {
+  //    res.json({error: true, msg: "Request timed out"})
+  // }, 10000)
 
   const departData = await GetData(
     req.body.origin,

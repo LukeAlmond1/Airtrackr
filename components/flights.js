@@ -25,49 +25,54 @@ export default function Flights({ query }) {
   const [loadedVal, setLoadedVal] = useState("0%");
 
   async function getResults() {
-    let localLoad;
-    setLoadedVal("50%");
+    try {
+      let localLoad;
+      setLoadedVal("50%");
 
-    const res = await axios.post(`api/offers?airline=${query.airline}`, {
-      origin: query.origin,
-      dest: query.dest,
-      departDate: query.departDate,
-      returnDate: query.returnDate,
-    });
+      const res = await axios.post(`api/offers?airline=${query.airline}`, {
+        origin: query.origin,
+        dest: query.dest,
+        departDate: query.departDate,
+        returnDate: query.returnDate,
+      });
 
-    setLoadedVal("100%");
-    localLoad = "100%";
+      setLoadedVal("100%");
+      localLoad = "100%";
 
-    const { returnArray, departArray, error } = res.data;
+      const { returnArray, departArray, error } = res.data;
 
-    if (localLoad === "100%" && error) {
-      setTimeout(() => {
-        setDataFoundMsg(`Ahh, we couldn't find any flights for those routes`);
-        setLoading(false);
-      }, 5000);
-    }
+      if (localLoad === "100%" && error) {
+        setTimeout(() => {
+          setDataFoundMsg(`Ahh, we couldn't find any flights for those routes`);
+          setLoading(false);
+        }, 5000);
+      }
 
-    if (localLoad === "100%" && !error) {
-      setTimeout(() => {
-        if (departArray.length > 0 && returnArray.length > 0) {
-          setDataFoundMsg("Hurrah, we’ve found");
-          setDataFoundNum(departArray.length + returnArray.length);
-          setDepartFlightList(departArray);
-          setReturnFlightList(returnArray);
-          setStage(1);
-        } else {
-          setDataFoundMsg(
-            `Ahh, we couldn't find any ${
-              departArray.length === 0
-                ? "departure"
-                : returnArray.length === 0
-                ? "return"
-                : ""
-            } flights for those dates`
-          );
-        }
-        setLoading(false);
-      }, 5000);
+      if (localLoad === "100%" && !error) {
+        setTimeout(() => {
+          if (departArray.length > 0 && returnArray.length > 0) {
+            setDataFoundMsg("Hurrah, we’ve found");
+            setDataFoundNum(departArray.length + returnArray.length);
+            setDepartFlightList(departArray);
+            setReturnFlightList(returnArray);
+            setStage(1);
+          } else {
+            setDataFoundMsg(
+              `Ahh, we couldn't find any ${
+                departArray.length === 0
+                  ? "departure"
+                  : returnArray.length === 0
+                  ? "return"
+                  : ""
+              } flights for those dates`
+            );
+          }
+          setLoading(false);
+        }, 5000);
+      }
+    } catch (error) {
+      setDataFoundMsg(`Ahh, we couldn't find any flights for those routes`);
+      setLoading(false);
     }
   }
 
