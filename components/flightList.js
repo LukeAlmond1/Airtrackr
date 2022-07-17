@@ -53,7 +53,7 @@ export default function FlightList({
         Select your flight from the list below to see more details
       </p>
 
-      <div className="flex flex-col pr-6 w-full gap-y-8 mt-8 xl:mt-12  h-[600px]  overflow-scroll scrollbar-thin scrollbar-thumb-black scrollbar-track-custom-light scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
+      <div className="flex flex-col pr-6 w-full gap-y-8 mt-8 xl:mt-12  h-[600px]  overflow-scroll xl:scrollbar-thin xl:scrollbar-thumb-black xl:scrollbar-track-custom-light xl:scrollbar-thumb-rounded-full xl:scrollbar-track-rounded-full">
         {data.map((el, i) => (
           <div
             key={i}

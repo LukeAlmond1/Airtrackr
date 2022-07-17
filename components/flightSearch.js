@@ -95,7 +95,7 @@ export default function FlightSearch() {
 
   return (
     <div className="w-full flex justify-center mt-12 xl:mt-24 mb-24">
-      <div className="w-11/12 xl:w-10/12 grid xl:grid-cols-3 bg-[#EFEFEF] gap-x-24 gap-y-8 py-12 rounded-md px-10 relative">
+      <div className="w-11/12 xl:w-10/12 grid xl:grid-cols-3 bg-[#EFEFEF] gap-x-24 gap-y-8 py-12 rounded-md px-6 xl:px-10 relative">
         <GetAirport
           value={airportFromValue}
           setValue={setAirportFromValue}

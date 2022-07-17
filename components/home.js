@@ -20,7 +20,7 @@ export default function HomePage() {
     { text: "Weather Details", icon: f4, w: "w-56" },
   ];
 
-  const { error, setError } = useStateContext();
+  const { error } = useStateContext();
 
   return (
     <div>
