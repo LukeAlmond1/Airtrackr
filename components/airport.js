@@ -51,7 +51,7 @@ export default function Airport() {
         </AnimatePresence>
       </div>
 
-      <div className="border h-96 2xl:h-auto relative rounded-t-lg 2xl:rounded-r-lg order-1 2xl:order-2">
+      <div className="border h-96 2xl:h-[700px] relative rounded-t-lg 2xl:rounded-r-lg order-1 2xl:order-2">
         <Map lat={data.lat} lng={data.lng} zoom={12} />
       </div>
     </div>
