@@ -39,7 +39,7 @@ export default function HomePage() {
             <p className="font-cust text-lg lg:text-xl lg:text-left text-center font-[400] mt-4 xl:mt-6">
               Get the lastest information for your flights & flight locations
             </p>
-            <div className="grid  sm:grid-cols-2 sm:w-fit gap-y-4  gap-x-4  mt-6">
+            <div className="grid sm:grid-cols-2  gap-y-4  gap-x-4  mt-6">
               {features.map((el, i) => (
                 <div
                   className={`flex py-4 px-4 w-full lg:${el.w} border-2 items-center rounded-md border-black`}
