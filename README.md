@@ -1,4 +1,5 @@
 ## Airtrackr Summary
+Airtrackr is a flight & location tracking application that allows users to view details on the status of there flight as well as location details about the destinations that they are travelling to. Users input conventional information about there flight such as depart & return dates, airline, depart & return airport to which the app then uses this data to fetch the appropriate information from a myriad of different api endpoints.
 
 ![This is an image](/media/summary/a_home.jpg)
 
