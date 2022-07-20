@@ -7,8 +7,6 @@ import { Polyline } from "@react-google-maps/api";
 
 export default function Route() {
   const { fetchedRouteData, flightView } = useStateContext();
-
-  const apiKey = "AIzaSyAJchZBF9LcOcEzOD78-WQHz8vmmfb1H68";
   const [directionResponse, setDirectionResponse] = useState("");
 
   const path = [
