@@ -1,3 +1,3 @@
 ## Airtrackr Summary
 
-![This is an image](/airtrackr/media/summary/a_home.jpg)
+![This is an image](/media/summary/a_home.jpg)
