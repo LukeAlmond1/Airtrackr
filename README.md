@@ -4,7 +4,7 @@ Here is some dummy details that you can use to login in to a pre made codeflo us
 account.
 
 > :airplane: **Flying From:** Manchester Airport\
-> :airplane: **Flying to:** Alicante-elche Airport
+> :airplane: **Flying to:** Alicante-elche Airport\
 > :airplane: **Flying with:** easyjet\
 > :date: **Depart Date:** Today + 2 Days\
 > :date: **Return Date:** Depart date plus 1 Day
