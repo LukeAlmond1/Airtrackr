@@ -8,6 +8,7 @@ This page is where users can input their flight details to see further informati
 
 ![This is an image](/media/summary/a_errorH.jpg)
 
+
 ### Home Page ~ Incorrect date range
 
 This pop up message ensures that the user selects both their departure & return flights to give our backend routes enough information to make any further api requests. Upon selection, the flight id of the currently selected flight gets stored in a state variable in which gets attached to the post request when a user then clicks to see more details on their selected flights.
