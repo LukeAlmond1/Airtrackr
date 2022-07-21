@@ -14,7 +14,7 @@ export default function GetAirline({
   placeholder,
 }) {
   const [showAll, setShowAll] = useState(false);
-  const [suggestions, setSuggestions] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
   const { error, setError, setAirlineIata } = useStateContext();
 
   const getSuggestions = (value) => {
