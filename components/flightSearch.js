@@ -37,30 +37,40 @@ export default function FlightSearch() {
 
   const router = useRouter();
 
+  const [loading, setLoading] = useState(null);
+
   function handleFlightSearch() {
     setError("");
-    if (new Date(departDate).getTime() > new Date(returnDate).getTime()) {
-      setError("Your return flight can’t be before your depart flight");
-    }
-    if (
-      departDate === "" ||
-      returnDate === "" ||
-      airlineValue === "" ||
-      airportLeaveValue === "" ||
-      airportFromValue === ""
-    ) {
-      setError("Please fill all input fields");
-    } else if (
-      new Date(departDate).getTime() < new Date(returnDate).getTime()
-    ) {
-      router.push(
-        `/flights?departDate=${moment(new Date(departDate)).format(
-          "YYYY-MM-DD"
-        )}&returnDate=${moment(new Date(returnDate)).format(
-          "YYYY-MM-DD"
-        )}&origin=${origin}&dest=${dest}&airline=${airlineIata}`
-      );
-    }
+    setLoading(true);
+
+    setTimeout(() => {
+        if (new Date(departDate).getTime() > new Date(returnDate).getTime()) {
+            setError("Your return flight can’t be before your depart flight");
+            setLoading(false);
+        }
+        if (
+            departDate === "" ||
+            returnDate === "" ||
+            airlineValue === "" ||
+            airportLeaveValue === "" ||
+            airportFromValue === ""
+        ) {
+            setError("Please fill all input fields");
+            setLoading(false);
+        } else if (
+            new Date(departDate).getTime() < new Date(returnDate).getTime()
+        ) {
+            router.push(
+                `/flights?departDate=${moment(new Date(departDate)).format(
+                "YYYY-MM-DD"
+                )}&returnDate=${moment(new Date(returnDate)).format(
+                "YYYY-MM-DD"
+                )}&origin=${origin}&dest=${dest}&airline=${airlineIata}`
+            );
+            setLoading(false);
+        }
+    }, 2000)
+
   }
 
   async function getAirlines() {
@@ -129,12 +139,12 @@ export default function FlightSearch() {
           question="Return Date?"
           data={returnData}
         />
-        <div className=" w-full  h-fit self-end flex justify-center flex-col relative">
+        <div className=" w-full h-fit self-end flex justify-center flex-col relative">
           <button
             onClick={() => handleFlightSearch()}
             className="w-full text-left pl-10 text-lg h-fit bg-black border-2 rounded-[4px] border-black font-cust font-[700] text-white py-[17px]"
           >
-            Discover Details
+            {loading ? "Searching flight information..." : "Discover Detail"}
           </button>
           <span className="absolute z-50 right-8">
             <Image src={far} />

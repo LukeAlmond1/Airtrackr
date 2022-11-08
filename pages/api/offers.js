@@ -55,7 +55,6 @@ async function GetData(origin, dest, dateVal, airline, array) {
       });
     });
 
-    array = array.filter((e) => e.iata === airline);
     return array;
   } catch (error) {
     console.log(error.message);
@@ -63,24 +62,24 @@ async function GetData(origin, dest, dateVal, airline, array) {
 }
 
 export default async function handler(req, res) {
-  const departData = await GetData(
-    req.body.origin,
-    req.body.dest,
-    req.body.departDate,
-    req.query.airline,
-    []
-  );
+    const departData = await GetData(
+        req.body.origin,
+        req.body.dest,
+        req.body.departDate,
+        req.query.airline,
+        []
+    );
 
-  const returnData = await GetData(
-    req.body.dest,
-    req.body.origin,
-    req.body.returnDate,
-    req.query.airline,
-    []
-  );
+    const returnData = await GetData(
+        req.body.dest,
+        req.body.origin,
+        req.body.returnDate,
+        req.query.airline,
+        []
+    );
 
-  res.json({
-    departArray: departData,
-    returnArray: returnData,
-  });
+    res.json({
+        departArray: departData,
+        returnArray: returnData,
+    });
 }
